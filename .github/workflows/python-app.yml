@@ -23,6 +23,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+    
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -31,3 +33,6 @@ jobs:
     - name: Install deps
       run: |
         pip install numpy pandas bokeh scipy hover
+        conda create -n env
+        conda activate env
+        conda install --channel conda-forge --channel pytorch numpy pandas bokeh scipy hover
