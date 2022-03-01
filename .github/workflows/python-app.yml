@@ -34,5 +34,7 @@ jobs:
       run: |
         pip install numpy pandas bokeh scipy hover
         conda create -n env
+        conda init bash
+        conda init zsh
         conda activate env
         conda install --channel conda-forge --channel pytorch numpy pandas bokeh scipy hover
