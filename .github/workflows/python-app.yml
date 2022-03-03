@@ -33,8 +33,10 @@ jobs:
     - name: Install deps
       run: |
         pip install numpy pandas bokeh scipy hover
+        
+    - name: Prepare Conda
         conda create -n env
-        conda init bash
-        conda init zsh
+        
+    - name: Install Conda deps
         conda activate env
         conda install --channel conda-forge --channel pytorch numpy pandas bokeh scipy hover
