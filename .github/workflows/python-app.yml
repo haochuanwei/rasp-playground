@@ -30,15 +30,12 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install deps
+    - name: Install deps by pip
+      if: ${{runner.os != 'windows-latest'}} || ${{runner.python-version != '3.9'}}
       run: |
         pip install numpy pandas bokeh scipy hover
-        
-    - name: Prepare Conda
+    
+    - name: Install deps by conda
+      if: ${{runner.os == 'windows-latest'}} && ${{runner.python-version == '3.9'}}
       run: |
-        conda create -n env
-        
-    - name: Install Conda deps
-      run: |
-        conda activate env
         conda install --channel conda-forge --channel pytorch numpy pandas bokeh scipy hover
