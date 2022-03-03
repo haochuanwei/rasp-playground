@@ -35,8 +35,10 @@ jobs:
         pip install numpy pandas bokeh scipy hover
         
     - name: Prepare Conda
+      run: |
         conda create -n env
         
     - name: Install Conda deps
+      run: |
         conda activate env
         conda install --channel conda-forge --channel pytorch numpy pandas bokeh scipy hover
